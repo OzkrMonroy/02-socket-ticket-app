@@ -22,7 +22,7 @@ export const RouterPage = () => {
   return (
     <Router>
       <Layout style={{ minHeight: "100vh" }}>
-        <Sider trigger={null}>
+        <Sider trigger={null} collapsedWidth="0" breakpoint="md">
           <div className="logo" />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
             <Menu.Item key={"1"} icon={<UserOutlined />}>
