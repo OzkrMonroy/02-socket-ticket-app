@@ -1,21 +1,29 @@
 import { Button, Divider, Form, Input, InputNumber, Typography } from "antd";
 import { SaveOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useHideMenu } from "../hooks/useHideMenu";
+import { getUserInfo } from "../helpers/getUserInfo";
+import { useState } from "react";
 const { Title, Text } = Typography;
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const [agent] = useState(getUserInfo());
   useHideMenu(false);
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
-    navigate("/desk");
+  const onFinish = ({ username, desknumber }) => {
+    localStorage.setItem("agent", username);
+    localStorage.setItem("desk", desknumber);
+    navigate("/desk", { replace: true });
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  if (agent.agent && agent.desk) {
+    return <Navigate to={"/desk"} replace />;
+  }
 
   return (
     <>
