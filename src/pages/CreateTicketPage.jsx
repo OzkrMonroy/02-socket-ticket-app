@@ -1,7 +1,11 @@
 import { Button, Col, Row, Typography } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
+import { useHideMenu } from "../hooks/useHideMenu";
+
+const { Text, Title } = Typography;
 
 export const CreateTicketPage = () => {
+  useHideMenu(true);
   const createTicket = () => {
     console.log("Creating...");
   };
@@ -9,13 +13,11 @@ export const CreateTicketPage = () => {
     <>
       <Row>
         <Col span={14} offset={6} align="center">
-          <Typography.Title level={3}>
-            Press the button to create a ticket
-          </Typography.Title>
+          <Title level={3}>Press the button to create a ticket</Title>
           <Button
             type="primary"
             shape="round"
-            icon={DownloadOutlined}
+            icon={<DownloadOutlined />}
             size="large"
             onClick={createTicket}
           >
@@ -25,10 +27,10 @@ export const CreateTicketPage = () => {
       </Row>
       <Row style={{ marginTop: 100 }}>
         <Col span={14} offset={6} align="center">
-          <Typography.Text level={2}>Their number</Typography.Text>
-          <Typography.Text type="success" style={{ fontSize: 55 }}>
+          <Text level={2}>Their number</Text>
+          <Text type="success" style={{ fontSize: 55 }}>
             55
-          </Typography.Text>
+          </Text>
         </Col>
       </Row>
     </>

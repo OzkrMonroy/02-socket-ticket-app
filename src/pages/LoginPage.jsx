@@ -1,10 +1,13 @@
 import { Button, Divider, Form, Input, InputNumber, Typography } from "antd";
 import { SaveOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { useHideMenu } from "../hooks/useHideMenu";
 const { Title, Text } = Typography;
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  useHideMenu(false);
+
   const onFinish = (values) => {
     console.log("Success:", values);
     navigate("/desk");
